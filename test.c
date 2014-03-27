@@ -28,6 +28,25 @@ int line_vector_test(int i1,int i2,int i3,int i4,char *msg,
 int ttl_vector(int i1,int i2,int i3,int i4,char *msg,
                int o1,int o2,int o3,int o4)
 {
+  int list[4]= {i1, i2, i3, i4};
+  int i = 1;
+  while(i<4) {
+    int j = i;
+    while(list[j-1] != 0 && list[j-1] >=0) {
+    	if(list[j-1] == 0 && list[j] !=0) {
+	  list[j-1] = list[j];
+	  list[j] = 0;
+    	}
+        j++;
+    }
+    i++;
+  }
+
+  o1 = list[0];
+  o2 = list[1];
+  o3 = list[2];
+  o4 = list[3];
+
   return line_vector_test(i1,i2,i3,i4,msg,o1,o2,o3,o4,tilt_line_left);
 }
 
