@@ -15,11 +15,19 @@ int tilt_line_left(int length,int *line)
 	  line[j+1] = 0;
 	j--;
     }
+
+    if(line[j] >0 && line[j] == line[j+1]) {
+	line[j] = line[j]*2;
+	line[j+1] = 0;
+    }
+
     i++;
   }
   
 
   // combine tiles as required
+  
+
 
   return 0;
 }
