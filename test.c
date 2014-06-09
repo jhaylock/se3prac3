@@ -72,10 +72,23 @@ int ttl_vector(int i1,int i2,int i3,int i4,char *msg,
   return line_vector_test(i1,i2,i3,i4,msg,o1,o2,o3,o4,tilt_line_left);
 }
 
-int ttr_vector(int i1,int i2,int i3,int i4,char *msg,
-               int o1,int o2,int o3,int o4)
+int ttbr_vector(int ia1, int ia2, int ia3, int ia4, 
+                        int ib1, int ib2, int ib3, int ib4,
+                        int ic1, int ic2, int ic3, int ic4,
+                        int id1, int id2, int id3, int id4, char *msg,
+                        int oa1, int oa2, int oa3, int oa4,
+                        int ob1, int ob2, int ob3, int ob4,
+                        int oc1, int oc2, int oc3, int oc4,
+                        int od1, int od2, int od3, int od4)
 {
-  return line_vector_test(i1,i2,i3,i4,msg,o1,o2,o3,o4,tilt_line_right);
+    return board_vector_test(ia1, ia2, ia3, ia4, 
+                        ib1, ib2, ib3, ib4,
+                        ic1, ic2, ic3, ic4,
+                        id1, id2, id3, id4, msg,
+                        oa1, oa2, oa3, oa4,
+                        ob1, ob2, ob3, ob4,
+                        oc1, oc2, oc3, oc4,
+                        od1, od2, od3, od4, tilt_board_right);
 }
 
 int ttbl_vector(int ia1, int ia2, int ia3, int ia4, 
@@ -176,7 +189,7 @@ int test_tilt_left()
 int test_tilt_board_right()
 {
   int e=0;  
-  e|=ttbl_vector(0,0,0,0,
+  e|=ttbr_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,"Empty board is empty after shift",
@@ -184,7 +197,7 @@ int test_tilt_board_right()
                     0,0,0,0,
                     0,0,0,0,
                     0,0,0,0);
-    e|=ttbl_vector(0,0,0,1,
+    e|=ttbr_vector(0,0,0,1,
                     0,0,0,1,
                     0,0,0,1,
                     0,0,0,1,"Value on right stays on right after shift",
@@ -192,7 +205,7 @@ int test_tilt_board_right()
                     0,0,0,1,
                     0,0,0,1,
                     0,0,0,1);
-    e|=ttbl_vector(1,0,0,0,
+    e|=ttbr_vector(1,0,0,0,
                     1,0,0,0,
                     1,0,0,0,
                     1,0,0,0,"Value on left shifts to right edge after shift",
@@ -200,7 +213,7 @@ int test_tilt_board_right()
                     0,0,0,1,
                     0,0,0,1,
                     0,0,0,1);
-    e|=ttbl_vector(0,0,1,0,
+    e|=ttbr_vector(0,0,1,0,
                     0,1,0,0,
                     0,0,1,0,
                     0,1,0,0,"Value in middle shifts to right edge after shift",
@@ -208,7 +221,7 @@ int test_tilt_board_right()
                     0,0,0,1,
                     0,0,0,1,
                     0,0,0,1);
-    e|=ttbl_vector(1,2,4,8,
+    e|=ttbr_vector(1,2,4,8,
                     8,4,2,1,
                     4,2,1,8,
                     2,1,8,4,"Distinct values don't combine",
@@ -216,7 +229,7 @@ int test_tilt_board_right()
                     8,4,2,1,
                     4,2,1,8,
                     2,1,8,4);
-    e|=ttbl_vector(1,1,1,1,
+    e|=ttbr_vector(1,1,1,1,
                     2,2,2,2,
                     4,4,4,4,
                     8,8,8,8,"Combinations don't cascade",
@@ -224,13 +237,21 @@ int test_tilt_board_right()
                     0,0,4,4,
                     0,0,8,8,
                     0,0,16,16);
-    e|=ttbl_vector(4,0,4,4,
+    e|=ttbr_vector(4,0,4,4,
                     4,0,4,4,
                     2,2,0,2,
                     0,0,0,0,"More combine tests",
                     0,0,4,8,
                     0,0,4,8,
                     0,0,2,4,
+                    0,0,0,0);
+    e|=ttbr_vector(1,0,2,2,
+                    4,4,4,4,
+                    2,0,2,0,
+                    0,0,0,0,"More combine tests",
+                    0,0,1,4,
+                    0,0,8,8,
+                    0,0,0,4,
                     0,0,0,0);
   
   return e;
@@ -333,6 +354,7 @@ int main(int argc,char **argv)
   int e=0;
   //e|=test_tilt_left();
   //e|=test_tilt_board_left();
-  e|=test_rotate();
+  //e|=test_rotate();
+  e|=test_tilt_board_right();
   return e;
 }
