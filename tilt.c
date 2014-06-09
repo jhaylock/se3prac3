@@ -24,8 +24,6 @@ int tilt_line_left(int length,int *line)
     i++;
   }
   
-
-  // combine tiles as required
   
 
 
