@@ -221,6 +221,8 @@ int test_tilt_left()
   //e|=ttl_vector(0,1,0,1,"Move left without combining",1,1,0,0);
   //e|=ttl_vector(1,0,0,1,"Move left without combining",1,1,0,0);
   e|=ttl_vector(4,0,4,4,NULL,8,4,0,0);
+  e|=ttl_vector(2,2,4,4,"Combinations don't cascade 2",4,8,0,0);
+  e|=ttl_vector(2,2,0,4,"Combinations don't cascade 3",4,4,0,0);
   return e;
 }
 
@@ -516,11 +518,11 @@ int test_tilt_board_down()
 int main(int argc,char **argv)
 {
   int e=0;
-  //e|=test_tilt_left();
+  e|=test_tilt_left();
   //e|=test_tilt_board_left();
   //e|=test_rotate();
   //e|=test_tilt_board_right();
   //e|=test_tilt_board_up();
-  e|=test_tilt_board_down();
+  //e|=test_tilt_board_down();
   return e;
 }
