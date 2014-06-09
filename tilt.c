@@ -39,5 +39,6 @@ int tilt_line_right(int length,int *line)
 int tilt_board_left(int size,int *board)
 {
     
+    tilt_line_left(size, board);
     return 0;
 }
