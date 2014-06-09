@@ -41,5 +41,8 @@ int tilt_board_left(int size,int *board)
 {
     
     tilt_line_left(size, board);
+    tilt_line_left(size, board+4);
+    tilt_line_left(size, board+8);
+    tilt_line_left(size, board+12);
     return 0;
 }

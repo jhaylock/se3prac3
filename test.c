@@ -190,7 +190,7 @@ int test_tilt_board_left()
 int main(int argc,char **argv)
 {
   int e=0;
-  //e|=test_tilt_left();
+  e|=test_tilt_left();
   e|=test_tilt_board_left();
   return e;
 }
