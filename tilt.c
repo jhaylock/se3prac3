@@ -50,3 +50,16 @@ int rotate_left90(int size,int *board)
 {
     
 }
+
+int rotate_left180(int size,int *board)
+{
+    rotate_left90(size, *board);
+    rotate_left90(size, *board);
+}
+
+int rotate_left270(int size,int *board)
+{
+    rotate_left90(size, *board);
+    rotate_left90(size, *board);
+    rotate_left90(size, *board);
+}

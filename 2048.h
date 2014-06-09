@@ -19,3 +19,5 @@ int tilt_through_empty_space(int length, int *line);
 int tilt_line_left(int length,int *line);
 int tilt_line_right(int length,int *line);
 int rotate_left90(int size,int *board);
+int rotate_left180(int size,int *board);
+int rotate_left270(int size,int *board);
