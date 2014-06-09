@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "2048.h"
 
+
 int line_vector_test(int i1,int i2,int i3,int i4,char *msg,
                 int o1,int o2,int o3,int o4, int (*func)(int,int *))
 {
@@ -61,12 +62,13 @@ int test_tilt_right()
   e|=ttr_vector(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
   e|=ttr_vector(0,0,0,1,"Value on right stays on right after shift",0,0,0,1);
   e|=ttr_vector(1,0,0,0,"Value on left shifts to right edge after shift",0,0,0,1);
-  e|=ttl_vector(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
-  e|=ttl_vector(1,2,4,8,"Distinct values don't combine",1,2,4,8);
-  e|=ttl_vector(1,1,1,1,"Combinations don't cascade",0,0,2,2);
-  e|=ttl_vector(0,0,1,1,NULL,0,0,0,2);
-  e|=ttl_vector(4,0,1,1,NULL,0,0,4,2);
-  e|=ttl_vector(2,0,1,1,NULL,0,0,2,2);
+  e|=ttr_vector(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
+  e|=ttr_vector(1,2,4,8,"Distinct values don't combine",1,2,4,8);
+  e|=ttr_vector(1,1,1,1,"Combinations don't cascade",0,0,2,2);
+  e|=ttr_vector(0,0,1,1,NULL,0,0,0,2);
+  e|=ttr_vector(4,0,1,1,NULL,0,0,4,2);
+  e|=ttr_vector(2,0,1,1,NULL,0,0,2,2);
+  return e;
 }
 
 int main(int argc,char **argv)

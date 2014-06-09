@@ -31,3 +31,10 @@ int tilt_line_left(int length,int *line)
 
   return 0;
 }
+
+int tilt_line_right(int length,int *line)
+{
+    
+ return 0;  
+}
+
