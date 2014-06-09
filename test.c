@@ -520,6 +520,7 @@ int main(int argc,char **argv)
   //e|=test_tilt_board_left();
   //e|=test_rotate();
   //e|=test_tilt_board_right();
-  e|=test_tilt_board_up();
+  //e|=test_tilt_board_up();
+  e|=test_tilt_board_down();
   return e;
 }

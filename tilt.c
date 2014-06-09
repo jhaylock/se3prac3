@@ -55,7 +55,9 @@ int tilt_board_up(int size,int *board)
 
 int tilt_board_down(int size,int *board)
 {
-    
+    rotate_left270(size,board);
+    tilt_board_left(size,board);
+    rotate_left90(size,board);
     return 0;
 }
 
