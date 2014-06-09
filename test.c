@@ -173,19 +173,65 @@ int test_tilt_left()
   return e;
 }
 
-int test_tilt_right()
+int test_tilt_board_right()
 {
-  int e=0;
-  e|=ttr_vector(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
-  e|=ttr_vector(0,0,0,1,"Value on right stays on right after shift",0,0,0,1);
-  e|=ttr_vector(1,0,0,0,"Value on left shifts to right edge after shift",0,0,0,1);
-  e|=ttr_vector(0,1,0,0,"Value in middle shifts to right edge after shift",0,0,0,1);
-  e|=ttr_vector(1,2,4,8,"Distinct values don't combine",1,2,4,8);
-  e|=ttr_vector(1,1,1,1,"Combinations don't cascade",0,0,2,2);
-  e|=ttr_vector(0,0,1,1,NULL,0,0,0,2);
-  e|=ttr_vector(4,0,1,1,NULL,0,0,4,2);
-  e|=ttr_vector(2,0,1,1,NULL,0,0,2,2);
-  e|=ttr_vector(4,0,4,4,NULL,0,0,4,8);
+  int e=0;  
+  e|=ttbl_vector(0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,"Empty board is empty after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0);
+    e|=ttbl_vector(0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,"Value on right stays on right after shift",
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1);
+    e|=ttbl_vector(1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,"Value on left shifts to right edge after shift",
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1);
+    e|=ttbl_vector(0,0,1,0,
+                    0,1,0,0,
+                    0,0,1,0,
+                    0,1,0,0,"Value in middle shifts to right edge after shift",
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1);
+    e|=ttbl_vector(1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4,"Distinct values don't combine",
+                    1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4);
+    e|=ttbl_vector(1,1,1,1,
+                    2,2,2,2,
+                    4,4,4,4,
+                    8,8,8,8,"Combinations don't cascade",
+                    0,0,2,2,
+                    0,0,4,4,
+                    0,0,8,8,
+                    0,0,16,16);
+    e|=ttbl_vector(4,0,4,4,
+                    4,0,4,4,
+                    2,2,0,2,
+                    0,0,0,0,"More combine tests",
+                    0,0,4,8,
+                    0,0,4,8,
+                    0,0,2,4,
+                    0,0,0,0);
   
   return e;
 }
