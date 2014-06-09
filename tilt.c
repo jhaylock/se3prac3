@@ -8,20 +8,21 @@ int tilt_line_left(int length,int *line)
 
   // slide tiles to the left
   int i = 0;
+  int j = i;
   while(i<length) {
-    int j = i;
-    while(j>=0 && line[j] == 0 && line[j+1] >0) {
+    while(j>=0 && line[j] == 0 && j+1 < length && line[j+1] >0) {
 	  line[j] = line[j+1];
 	  line[j+1] = 0;
 	j--;
     }
-
-    if(line[j] >0 && line[j] == line[j+1]) {
+    //combining
+    if(j+1 < length && line[j] >=0 && line[j] == line[j+1]) {
 	line[j] = line[j]*2;
 	line[j+1] = 0;
     }
 
     i++;
+    j=i;
   }
   
   
