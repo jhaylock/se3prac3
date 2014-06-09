@@ -75,7 +75,7 @@ int ttr_vector(int i1,int i2,int i3,int i4,char *msg,
   return line_vector_test(i1,i2,i3,i4,msg,o1,o2,o3,o4,tilt_line_right);
 }
 
-int ttb1_vector(int ia1, int ia2, int ia3, int ia4, 
+int ttbl_vector(int ia1, int ia2, int ia3, int ia4, 
                         int ib1, int ib2, int ib3, int ib4,
                         int ic1, int ic2, int ic3, int ic4,
                         int id1, int id2, int id3, int id4, char *msg,
@@ -133,6 +133,14 @@ int test_tilt_right()
 int test_tilt_board_left()
 {
     int e=0;
+    e|=ttbl_vector(0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,"Empty board is empty after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0);
     
     return e;
 }
@@ -140,6 +148,7 @@ int test_tilt_board_left()
 int main(int argc,char **argv)
 {
   int e=0;
-  e|=test_tilt_left();
+  //e|=test_tilt_left();
+  e|=test_tilt_board_left();
   return e;
 }
