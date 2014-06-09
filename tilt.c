@@ -31,18 +31,20 @@ int tilt_line_left(int length,int *line)
   return 0;
 }
 
-int tilt_line_right(int length,int *line)
-{
-    
- return 0;  
-}
-
 int tilt_board_left(int size,int *board)
 {
     tilt_line_left(size, board);
     tilt_line_left(size, board+4);
     tilt_line_left(size, board+8);
     tilt_line_left(size, board+12);
+    return 0;
+}
+
+int tilt_board_right(int size,int *board)
+{
+    rotate_left180(size, board);
+    tilt_board_left(size,board);
+    rotate_left180(size,board);
     return 0;
 }
 
