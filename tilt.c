@@ -16,7 +16,7 @@ int tilt_line_left(int length,int *line)
 	j--;
     }
     //combining
-    if(j+1 < length && line[j] >=0 && line[j] == line[j+1]) {
+    if(j>=0 && j+1 < length && line[j] >0 && line[j] == line[j+1]) {
 	line[j] = line[j]*2;
 	line[j+1] = 0;
     }
