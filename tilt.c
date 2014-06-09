@@ -39,10 +39,14 @@ int tilt_line_right(int length,int *line)
 
 int tilt_board_left(int size,int *board)
 {
-    
     tilt_line_left(size, board);
     tilt_line_left(size, board+4);
     tilt_line_left(size, board+8);
     tilt_line_left(size, board+12);
     return 0;
+}
+
+int rotate_left90(int size,int *board)
+{
+    
 }

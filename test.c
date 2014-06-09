@@ -97,6 +97,25 @@ int ttbl_vector(int ia1, int ia2, int ia3, int ia4,
                         od1, od2, od3, od4, tilt_board_left);
 }
 
+int trl90_vector(int ia1, int ia2, int ia3, int ia4, 
+                        int ib1, int ib2, int ib3, int ib4,
+                        int ic1, int ic2, int ic3, int ic4,
+                        int id1, int id2, int id3, int id4, char *msg,
+                        int oa1, int oa2, int oa3, int oa4,
+                        int ob1, int ob2, int ob3, int ob4,
+                        int oc1, int oc2, int oc3, int oc4,
+                        int od1, int od2, int od3, int od4)
+{
+    return board_vector_test(ia1, ia2, ia3, ia4, 
+                        ib1, ib2, ib3, ib4,
+                        ic1, ic2, ic3, ic4,
+                        id1, id2, id3, id4, msg,
+                        oa1, oa2, oa3, oa4,
+                        ob1, ob2, ob3, ob4,
+                        oc1, oc2, oc3, oc4,
+                        od1, od2, od3, od4, rotate_left90);
+}
+
 int test_tilt_left()
 {
   int e=0;
@@ -187,10 +206,33 @@ int test_tilt_board_left()
     return e;
 }
 
+int test_rotate()
+{
+    int e=0;
+    e|=trl90_vector(  1,1,1,1,
+                    2,2,2,2,
+                    4,4,4,4,
+                    8,8,8,8,"Rotate 90 degrees left",
+                    1,2,4,8,
+                    1,2,4,8,
+                    1,2,4,8,
+                    1,2,4,8);
+    e|=trl90_vector(  2,1,2,1,
+                    4,8,4,8,
+                    1,4,1,4,
+                    8,2,8,2,"Rotate 90 degrees left",
+                    1,8,4,2,
+                    2,4,1,8,
+                    1,8,4,2,
+                    2,4,1,8);
+    return e;
+}
+
 int main(int argc,char **argv)
 {
   int e=0;
-  e|=test_tilt_left();
-  e|=test_tilt_board_left();
+  //e|=test_tilt_left();
+  //e|=test_tilt_board_left();
+  e|=test_rotate();
   return e;
 }
