@@ -519,6 +519,7 @@ int main(int argc,char **argv)
   //e|=test_tilt_left();
   //e|=test_tilt_board_left();
   //e|=test_rotate();
-  e|=test_tilt_board_right();
+  //e|=test_tilt_board_right();
+  e|=test_tilt_board_up();
   return e;
 }
