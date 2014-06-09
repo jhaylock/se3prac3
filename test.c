@@ -186,6 +186,25 @@ int ttbu_vector(int ia1, int ia2, int ia3, int ia4,
                         od1, od2, od3, od4, tilt_board_up);
 }
 
+int ttbd_vector(int ia1, int ia2, int ia3, int ia4, 
+                        int ib1, int ib2, int ib3, int ib4,
+                        int ic1, int ic2, int ic3, int ic4,
+                        int id1, int id2, int id3, int id4, char *msg,
+                        int oa1, int oa2, int oa3, int oa4,
+                        int ob1, int ob2, int ob3, int ob4,
+                        int oc1, int oc2, int oc3, int oc4,
+                        int od1, int od2, int od3, int od4)
+{
+    return board_vector_test(ia1, ia2, ia3, ia4, 
+                        ib1, ib2, ib3, ib4,
+                        ic1, ic2, ic3, ic4,
+                        id1, id2, id3, id4, msg,
+                        oa1, oa2, oa3, oa4,
+                        ob1, ob2, ob3, ob4,
+                        oc1, oc2, oc3, oc4,
+                        od1, od2, od3, od4, tilt_board_down);
+}
+
 int test_tilt_left()
 {
   int e=0;
@@ -387,22 +406,22 @@ int test_tilt_board_up()
                     0,0,0,0,
                     0,0,0,0,
                     0,0,0,0);
-    e|=ttbu_vector(1,1,1,1,
+    e|=ttbu_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
-                    0,0,0,0,"Value on bottom shift to top edge after shift",
+                    1,1,1,1,"Value on bottom shift to top edge after shift",
+                    1,1,1,1,
                     0,0,0,0,
                     0,0,0,0,
-                    0,0,0,0,
-                    1,1,1,1);
-    e|=ttbu_vector(1,1,1,1,
-                    0,0,0,0,
-                    0,0,0,0,
-                    0,0,0,0,"Value in middle shifts to top edge after shift",
-                    0,0,0,0,
+                    0,0,0,0);
+    e|=ttbu_vector(1,0,0,0,
                     0,1,0,0,
-                    1,0,1,0,
-                    0,0,0,1);
+                    0,0,0,1,
+                    0,0,1,0,"Value in middle shifts to top edge after shift",
+                    1,1,1,1,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0);
     e|=ttbu_vector(1,2,4,8,
                     8,4,2,1,
                     4,2,1,8,
@@ -414,7 +433,7 @@ int test_tilt_board_up()
     e|=ttbu_vector(8,4,2,1,
                     8,4,2,1,
                     8,4,2,1,
-                    8,4,2,2,"Combinations don't cascade",
+                    8,4,2,1,"Combinations don't cascade",
                     16,8,4,2,
                     16,8,4,2,
                     0,0,0,0,
@@ -427,6 +446,69 @@ int test_tilt_board_up()
                     0,0,0,4,
                     0,0,0,0,
                     0,0,0,0);
+  
+  return e;
+}
+
+int test_tilt_board_down()
+{
+  int e=0;  
+  e|=ttbd_vector(0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,"Empty board is empty after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0);
+    e|=ttbd_vector(0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    1,1,1,1,"Value on bottom stay on bottom after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    1,1,1,1);
+    e|=ttbd_vector(1,1,1,1,
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,"Value on top shift to bottom edge after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    1,1,1,1);
+    e|=ttbd_vector(1,0,0,0,
+                    0,1,0,0,
+                    0,0,1,0,
+                    0,0,0,1,"Value in middle shifts to top edge after shift",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,0,
+                    1,1,1,1);
+    e|=ttbd_vector(1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4,"Distinct values don't combine",
+                    1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4);
+    e|=ttbd_vector(8,4,2,1,
+                    8,4,2,1,
+                    8,4,2,1,
+                    8,4,2,1,"Combinations don't cascade",
+                    0,0,0,0,
+                    0,0,0,0,
+                    16,8,4,2,
+                    16,8,4,2);
+    e|=ttbd_vector(0,0,0,4,
+                    0,1,2,4,
+                    1,1,0,2,
+                    0,0,2,2,"More combine tests",
+                    0,0,0,0,
+                    0,0,0,0,
+                    0,0,0,8,
+                    1,2,4,4);
   
   return e;
 }
