@@ -141,7 +141,46 @@ int test_tilt_board_left()
                     0,0,0,0,
                     0,0,0,0,
                     0,0,0,0);
-    
+    e|=ttbl_vector(1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,"Value on left stays on left after shift",
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0);
+    e|=ttbl_vector(0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,
+                    0,0,0,1,"Value of right shifts to left edge after shift",
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0);
+    e|=ttbl_vector(0,0,1,0,
+                    0,1,0,0,
+                    0,0,1,0,
+                    0,1,0,0,"Value in middle shifts to left edge after shift",
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0,
+                    1,0,0,0);
+    e|=ttbl_vector(1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4,"Distinct values don't combine",
+                    1,2,4,8,
+                    8,4,2,1,
+                    4,2,1,8,
+                    2,1,8,4);
+    e|=ttbl_vector(1,1,1,1,
+                    2,2,2,2,
+                    4,4,4,4,
+                    8,8,8,8,"Combinations don't cascade",
+                    2,2,0,0,
+                    4,4,0,0,
+                    8,8,0,0,
+                    16,16,0,0);
     return e;
 }
 
