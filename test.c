@@ -48,7 +48,10 @@ int board_vector_test(int ia1, int ia2, int ia3, int ia4,
     }
     fflush(stdout);
     func(4,board);
-    if ((board[0]!=oa1)||(board[1]!=oa2)||(board[2]!=oa3)||(board[3]!=oa4))
+    if ((board[0]!=oa1)||(board[1]!=oa2)||(board[2]!=oa3)||(board[3]!=oa4)||
+        (board[4]!=ob1)||(board[5]!=ob2)||(board[6]!=ob3)||(board[7]!=ob4)||
+        (board[8]!=oc1)||(board[9]!=oc2)||(board[10]!=oc3)||(board[11]!=oc4)||
+        (board[12]!=od1)||(board[13]!=od2)||(board[14]!=od3)||(board[15]!=od4))
       {
         printf("FAILED: {%d,%d,%d,%d,\n %d,%d,%d,%d,\n %d,%d,%d,%d,\n %d,%d,%d,%d} "
                 "became {%d,%d,%d,%d,\n %d,%d,%d,%d,\n %d,%d,%d,%d,\n %d,%d,%d,%d} instead of"
@@ -187,7 +190,7 @@ int test_tilt_board_left()
 int main(int argc,char **argv)
 {
   int e=0;
-  e|=test_tilt_left();
+  //e|=test_tilt_left();
   e|=test_tilt_board_left();
   return e;
 }
