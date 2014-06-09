@@ -48,7 +48,36 @@ int tilt_board_left(int size,int *board)
 
 int rotate_left90(int size,int *board)
 {
-    
+    int oldBoard[size*size];
+    int k = 0;
+    for(; k<size*size; k++) {
+        oldBoard[k] = board[k];
+    }
+    int i = 0;
+    int n = 3;
+    while(i<4) {
+        board[i] = oldBoard[n];
+        i++;
+        n+=4;
+    }
+    n = 2;
+    while(i<8) {
+        board[i] = oldBoard[n];
+        i++;
+        n+=4;
+    }
+    n = 1;
+    while(i<12) {
+        board[i] = oldBoard[n];
+        i++;
+        n+=4;
+    }
+    n = 0;
+    while(i<16) {
+        board[i] = oldBoard[n];
+        i++;
+        n+=4;
+    }
     return 0;
 }
 
