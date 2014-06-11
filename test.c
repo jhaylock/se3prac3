@@ -208,6 +208,7 @@ int ttbd_vector(int ia1, int ia2, int ia3, int ia4,
 int test_tilt_left()
 {
   int e=0;
+  printf("\nTILT LINE LEFT TESTS:\n");
   e|=ttl_vector(0,0,0,0,"Empty list is empty after shift",0,0,0,0);
   e|=ttl_vector(1,0,0,0,"Value on left stays on left after shift",1,0,0,0);
   e|=ttl_vector(0,0,0,1,"Value on right shifts to left edge after shift",1,0,0,0);
@@ -228,7 +229,8 @@ int test_tilt_left()
 
 int test_tilt_board_right()
 {
-  int e=0;  
+  int e=0;
+  printf("\nTILT BOARD RIGHT TESTS:\n");
   e|=ttbr_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
@@ -300,6 +302,7 @@ int test_tilt_board_right()
 int test_tilt_board_left()
 {
     int e=0;
+    printf("\nTILT BOARD LEFT TESTS:\n");
     e|=ttbl_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
@@ -354,6 +357,7 @@ int test_tilt_board_left()
 int test_rotate()
 {
     int e=0;
+    printf("\nROTATE BOARD TESTS:\n");
     e|=trl90_vector(1,1,1,1,
                     2,2,2,2,
                     4,4,4,4,
@@ -391,7 +395,8 @@ int test_rotate()
 
 int test_tilt_board_up()
 {
-  int e=0;  
+  int e=0; 
+  printf("\nTILT BOARD UP TESTS:\n");
   e|=ttbu_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
@@ -455,6 +460,7 @@ int test_tilt_board_up()
 int test_tilt_board_down()
 {
   int e=0;  
+  printf("\nTILT BOARD DOWN TESTS:\n");
   e|=ttbd_vector(0,0,0,0,
                     0,0,0,0,
                     0,0,0,0,
