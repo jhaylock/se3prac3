@@ -9,16 +9,18 @@ int tilt_line_left(int length,int *line)
   // slide tiles to the left
   int i = 0;
   int j = i;
+  int k = -1; //position of leftmost combination, used to prevent cascading combinations
   while(i<length) {
     while(j>=0 && line[j] == 0 && j+1 < length && line[j+1] >0) {
 	  line[j] = line[j+1];
 	  line[j+1] = 0;
-	j--;
+          j--;
     }
     //combining
-    if(j>=0 && j+1 < length && line[j] >0 && line[j] == line[j+1]) {
+    if(j>=0 && j>k && j+1 < length && line[j] >0 && line[j] == line[j+1]) {
 	line[j] = line[j]*2;
 	line[j+1] = 0;
+        k = j;
     }
 
     i++;
