@@ -521,14 +521,141 @@ int test_tilt_board_down()
   return e;
 }
 
+
+
+int test_parse_input()
+{
+  printf("\nPARSE INPUT TESTS:\n");
+  int e=99;
+  
+  //path 1 - invalid input
+  e=parse_input("x");
+  if(e==INVALID_INPUT)
+    printf("Path 1 passed\n");
+  else
+    printf("Path 1 failed\n");  
+  
+  //path 2 - go left
+  e=parse_input("l");
+  if(e==GO_LEFT)
+    printf("Path 2 passed\n");
+  else
+    printf("Path 2 failed\n");  
+  
+  //path 3 - right
+  e=parse_input("r");
+  if(e==GO_RIGHT)
+    printf("Path 3 passed\n");
+  else
+    printf("Path 3 failed\n");  
+  
+  //path 4 - up
+  e=parse_input("u");
+  if(e==GO_UP)
+    printf("Path 4 passed\n");
+  else
+    printf("Path 4 failed\n");  
+  
+  //path 5 - down
+  e=parse_input("d");
+  if(e==GO_DOWN)
+    printf("Path 5 passed\n");
+  else
+    printf("Path 5 failed\n");  
+  
+  //path 6 - blank
+  e=parse_input("");
+  if(e==GO_NOWHERE)
+    printf("Path 6 passed\n");
+  else
+    printf("Path 6 failed\n");  
+  
+  return e;
+}
+
+int test_board_create_PATH_ONE(int size)
+{
+  int **board=board_create(size);
+  if(board!=NULL)
+    printf("Path 1 passed\n");
+  else
+    printf("Path 1 failed\n");
+  return 0;
+}
+
+int test_board_create_PATH_TWO(int size)
+{
+  int **board=board_create(size);
+  if(board==NULL)
+    printf("Path 2 passed\n");
+  else
+    printf("Path 2 failed\n");
+  return 0;
+}
+
+//Boundary Tests
+int test_board_create()
+{
+  printf("\nBOARD CREATE TESTS:\n");
+  test_board_create_PATH_ONE(1);
+  test_board_create_PATH_ONE(2);
+  test_board_create_PATH_ONE(255);
+  test_board_create_PATH_ONE(254);
+  test_board_create_PATH_TWO(0);
+  test_board_create_PATH_TWO(256);
+  return 0;
+}
+
+
+int test_tilt_line_left_PATH_ONE(int length, int *line)
+{
+  int e = tilt_line_left(length,line);
+  if(e==0)
+    printf("Path 1 passed\n");
+  else
+    printf("Path 1 failed\n");
+  return e;
+}
+
+int test_tilt_line_left_PATH_TWO(int length, int *line)
+{
+  int e = tilt_line_left(length,line);
+  if(e==-1)
+    printf("Path 2 passed\n");
+  else
+    printf("Path 2 failed\n");
+  return e;
+}
+
+int test_tilt_line_left_WHITE()
+{
+  printf("\nTILT LINE LEFT BOUNDARY TESTS:\n");
+  int line[256] = {0};
+  test_tilt_line_left_PATH_ONE(1,line);
+  test_tilt_line_left_PATH_ONE(255,line);
+  test_tilt_line_left_PATH_ONE(2,line);
+  test_tilt_line_left_PATH_ONE(254,line);
+  test_tilt_line_left_PATH_TWO(0,line);
+  test_tilt_line_left_PATH_TWO(256,line);
+  return 0;
+}
+
 int main(int argc,char **argv)
 {
   int e=0;
+  
   e|=test_tilt_left();
   e|=test_tilt_board_left();
   e|=test_rotate();
   e|=test_tilt_board_right();
   e|=test_tilt_board_up();
-  e|=test_tilt_board_down();
+  e|=test_tilt_board_down();  
+  
+  printf("\n****WHITE BOX TESTS****\n");
+  e|=test_parse_input();
+  e|=test_board_create();
+  e|=test_tilt_line_left_WHITE();
   return e;
 }
+
+

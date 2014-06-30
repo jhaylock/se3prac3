@@ -20,3 +20,4 @@ int tilt_line_left(int length,int *line);
 int rotate_left90(int size,int *board);
 int rotate_left180(int size,int *board);
 int rotate_left270(int size,int *board);
+int parse_input(char *line);
