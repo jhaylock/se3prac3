@@ -11,26 +11,26 @@ This document outlines a test plan for testing the 2048 game program. Included a
 2. Test Strategies
 ---------------
 
-    * Developer Testing - throughout development test cases are to be written before implementation. 
-    * Unit Testing - functionality is broken into manageable pieces that are tested individually. 
-    * Black Box tests - sufficient sample inputs and expected outputs for various board tilting configurations are to be created. 
-    * White Box tests - boundary tests will be used to help ensure the tilting algorithm works as intended.
+* Developer Testing - throughout development test cases are to be written before implementation. 
+* Unit Testing - functionality is broken into manageable pieces that are tested individually. 
+* Black Box tests - sufficient sample inputs and expected outputs for various board tilting configurations are to be created. 
+* White Box tests - boundary tests will be used to help ensure the tilting algorithm works as intended.
 
 3. Functionality to be Tested
 ---------------
 
-    * Game detects keyboard inputs as expected.
-    * Tilting board up, tiles slide up to fill topmost empty tiles.
-    * Tilting board down, tiles slide down to fill bottommost empty tiles.
-    * Tilting board left, tiles slide left to fill leftmost empty slots.
-    * Tilting board right, tiles slide right to fill rightmost empty slots.
-    * Same number tiles combine after tilting to produce correct resulting number tile.
-    * A tile generated from combining cannot combine again in the same instance of tilting.
-    * After tilting, one new tile is spawned in a random empty spot on the board.
-    * If every tile is filled, game detects when no more moves can be made and declares 'game over'.
-    * Display shows correct tile values after tilts. 
-    * Score updates with correct values for each combination made.
-    * 'New Game' command resets tile values, display, and score.
+* Game detects keyboard inputs as expected.
+* Tilting board up, tiles slide up to fill topmost empty tiles.
+* Tilting board down, tiles slide down to fill bottommost empty tiles.
+* Tilting board left, tiles slide left to fill leftmost empty slots.
+* Tilting board right, tiles slide right to fill rightmost empty slots.
+* Same number tiles combine after tilting to produce correct resulting number tile.
+* A tile generated from combining cannot combine again in the same instance of tilting.
+* After tilting, one new tile is spawned in a random empty spot on the board.
+* If every tile is filled, game detects when no more moves can be made and declares 'game over'.
+* Display shows correct tile values after tilts. 
+* Score updates with correct values for each combination made.
+* 'New Game' command resets tile values, display, and score.
 
 4. Not to be Tested
 ---------------
