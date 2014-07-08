@@ -523,7 +523,9 @@ int test_tilt_board_down()
 
 ////
 // WHITE BOX TESTS START HERE
-////
+
+// Testing parse_input() input check
+//    6 paths: input: invalid,'l','r','u','d', or blank
 int test_parse_input()
 {
   printf("\nPARSE INPUT TESTS:\n");
@@ -574,6 +576,7 @@ int test_parse_input()
   return e;
 }
 
+//board_create() test path 1: valid input (>=1, <=255)
 int test_board_create_PATH_ONE(int size)
 {
   int **board=board_create(size);
@@ -584,6 +587,7 @@ int test_board_create_PATH_ONE(int size)
   return 0;
 }
 
+//board_create() test path 2: invalid input (<1, >255)
 int test_board_create_PATH_TWO(int size)
 {
   int **board=board_create(size);
@@ -594,7 +598,8 @@ int test_board_create_PATH_TWO(int size)
   return 0;
 }
 
-//Boundary Tests
+//Testing board_create() size check
+//    Boundary Tests for board size check
 int test_board_create()
 {
   printf("\nBOARD CREATE TESTS:\n");
@@ -607,7 +612,7 @@ int test_board_create()
   return 0;
 }
 
-
+//tilt_line_left() test path 1: valid input (>=1, <=255)
 int test_tilt_line_left_PATH_ONE(int length, int *line)
 {
   int e = tilt_line_left(length,line);
@@ -618,6 +623,7 @@ int test_tilt_line_left_PATH_ONE(int length, int *line)
   return e;
 }
 
+//tilt_line_left() test path 2: invalid input (<1, >255)
 int test_tilt_line_left_PATH_TWO(int length, int *line)
 {
   int e = tilt_line_left(length,line);
@@ -628,6 +634,8 @@ int test_tilt_line_left_PATH_TWO(int length, int *line)
   return e;
 }
 
+//Testing tilt_line_left() length check
+//  Boundary tests for line length check
 int test_tilt_line_left_WHITE()
 {
   printf("\nTILT LINE LEFT BOUNDARY TESTS:\n");
@@ -641,7 +649,6 @@ int test_tilt_line_left_WHITE()
   return 0;
 }
 
-////
 // WHITE BOX TESTS END HERE
 ////
 
