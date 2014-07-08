@@ -521,8 +521,9 @@ int test_tilt_board_down()
   return e;
 }
 
-
-
+////
+// WHITE BOX TESTS START HERE
+////
 int test_parse_input()
 {
   printf("\nPARSE INPUT TESTS:\n");
@@ -640,6 +641,11 @@ int test_tilt_line_left_WHITE()
   return 0;
 }
 
+////
+// WHITE BOX TESTS END HERE
+////
+
+
 int main(int argc,char **argv)
 {
   int e=0;
@@ -651,10 +657,12 @@ int main(int argc,char **argv)
   e|=test_tilt_board_up();
   e|=test_tilt_board_down();  
   
+  // WHITE BOX TESTS //
   printf("\n****WHITE BOX TESTS****\n");
   e|=test_parse_input();
   e|=test_board_create();
   e|=test_tilt_line_left_WHITE();
+  
   return e;
 }
 
